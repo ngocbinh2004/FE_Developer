@@ -1,0 +1,56 @@
+// tạo một mixin để điều chỉnh text 
+// color, font-weight, font-size
+@mixin styleText ($color, $fw, $fs) {
+    color: $color ;
+    font-weight: $fw ;
+    font-size: $fs;
+
+}
+@mixin styleButtonCircle ($w, $h, $active-hover: true) {
+    border-radius: 50%;
+    background-color: $color-green-themes;
+    width: $w;
+    height: $h;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    transition: all 0.3s;
+
+
+   @if $active-hover {
+    &::before {
+        border-radius: 50%;
+        background-color: red;
+        content: "";
+        width: $w;
+        height: $h;
+        opacity: 0;
+        visibility: hidden;
+        width: $w;
+        height: $h;
+        position: absolute;
+        bottom: -$h;
+        transition: all 0.5s;
+
+    }
+
+    &:hover {
+        &::before {
+            bottom: 0;
+            opacity: 1;
+            visibility: visible;
+            z-index: -1;
+        }
+    }
+
+   }
+
+   
+
+
+
+    // padding == nhau về giá trị 4 hướng nội dung có chiều dài bằng chiều cao  || width height 
+}
